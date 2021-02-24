@@ -39,7 +39,7 @@ const insert = async() => {
         console.log(err)
     }
 };
-conn.sync(true);
+
 server.listen(process.env.PORT, () => {
     insert();
     setInterval(insert, HOUR);
