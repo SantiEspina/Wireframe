@@ -5,7 +5,8 @@ server.post('/:id', async (req, res, next) => {
     try{
         await Removed.create({ _id: req.params.id });
         await Article.destroy({ where: { _id: req.params.id } });
-        res.send('removed!');
+        const newArticles = await Article.findAll();
+        res.send(newArticles);
     } catch (err) {
         res.status(400).send(err)
     }
